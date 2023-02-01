@@ -12,11 +12,11 @@ function DashBoard() {
             <th>Change</th>
           </tr>
         </thead>
-        {stocks.map((stock) => {
+        {stocks.map((stock, index) => {
           const { name, lastPrice, change, symbol } = stock;
           return (
             <tr className="stock-details">
-              <Link key={name} to={`/Stock/${symbol}`}>
+              <Link key={index} to={`/Stock/${symbol}`}>
                 <td>{name}</td>
               </Link>
               <td className="price">{lastPrice}</td>
