@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import stocks from '../data';
+
 function DashBoard() {
   return (
     <div className="dashboard">
@@ -12,18 +13,20 @@ function DashBoard() {
             <th>Change</th>
           </tr>
         </thead>
-        {stocks.map((stock, index) => {
-          const { name, lastPrice, change, symbol } = stock;
-          return (
-            <tr className="stock-details">
-              <Link key={index} to={`/Stock/${symbol}`}>
-                <td>{name}</td>
-              </Link>
-              <td className="price">{lastPrice}</td>
-              <td className="change">{change.toFixed(4)}</td>
-            </tr>
-          );
-        })}
+        <tbody>
+          {stocks.map((stock, index) => {
+            const { name, lastPrice, change, symbol } = stock;
+            return (
+              <tr className="stock-details" key={index}>
+                <td>
+                  <Link to={`/Stock/${symbol}`}>{name}</Link>
+                </td>
+                <td className="price">{lastPrice}</td>
+                <td className="change">{change.toFixed(4)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
